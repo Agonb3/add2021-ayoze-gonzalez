@@ -8,49 +8,49 @@
 
 - Una vez instalado crearemos el fichero "**/root/instance.inf**" con los datos de nuestro servidor.
 
-![](1.jpg)
+![](1.JPG)
 
 - Ejecutamos el siguiente comando para instalar la instancia en el LDAP. "*dscreate -v from-file /root/instance.inf*" y comprobamos el estado del servicio con "*dsctl localhost status*".
 
-![](2.jpg)
+![](2.JPG)
 
 - Creamos el fichero **/root/.dsr** con el siguiente contenido para proporcionar los permisos.
 
-![](3.jpg)
+![](3.JPG)
 
 - Comprobamos el servicio con "*systemctl status dirsrv@localhost*"
 
-![](4.jpg)
+![](4.JPG)
 
 - Instalamos el comando **nmap** y ejecutamos el siguiente comando para comprobar que nuestro LDAP es accesible desde la red.
 
-![](5.jpg)
+![](5.JPG)
 
 - Para comprobar el acceso al contenido del LDAP ejecutamos los siguientes comandos "*ldapsearch -b "dc=ldap07,dc=curso2021" -x | grep dn*" y "*ldapsearch -H ldap://localhost -b "dc=ldapXX,dc=curso2021" -W -D "cn=Directory Manager" | grep dn*" ("esté último nos pedira contraseña")
 
-![](6.jpg)
+![](6.JPG)
 
 - Comprobamos que se han creado las unidades organizativas (OU) ejecutando el siguiente comando.
 
-![](7.jpg)
+![](7.JPG)
 
 ## Creación de Usuarios
 
 - Ahora añadiremos un usuario.
 Para ello crearemos el fichero "*mazinger-add.ldif*" con los siguientes registros:
 
-![](8.jpg)
+![](8.JPG)
 
 - Ejecutamos el siguiente comando para actualizar el LDAP con los datos del usuario que hemos creado.
 "*ldapadd -x -W -D "cn=Directory Manager" -f mazinger-add.ldif*"
 y comprobamos si se ha unido correctamente al LDAP.
 "*ldapsearch -W -D "cn=Directory Manager" -b "dc=ldap07,dc=curso2021" "(uid=*)"*"
 
-![](9.jpg)
+![](9.JPG)
 
 - Para eliminar a este usuario crearemos el fichero **mazinger-delete.ldif** con el contenido que se muestra a continuación y ejecutamos el siguiente comando.
 
-![](10.jpg)
+![](10.JPG)
 
 ## Claves Encriptadas
 
