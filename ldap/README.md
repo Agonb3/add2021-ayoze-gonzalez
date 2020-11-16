@@ -59,10 +59,10 @@ Para utulizar claves encriptadas instalaremos la siguiente herramienta **slappas
 Una vez instalada la ejecutamos con un cifrado SSHA con el comando
 "*slappasswd -h {SSHA}*" e introducimos nuestra clave.
 
-![](11.jpg)
+![](11.JPG)
 
 ## Agregamos Más Usuarios
 
 - Por último crearemos los usuarios "**koji, boss y drinfierno**".
 
-![](13.jpg)
+![](13.JPG)
