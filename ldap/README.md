@@ -8,7 +8,7 @@
 
 - Una vez instalado crearemos el fichero "**/root/instance.inf**" con los datos de nuestro servidor.
 
-![](./img/1jp)
+![](1.jpg)
 
 - Ejecutamos el siguiente comando para instalar la instancia en el LDAP. "*dscreate -v from-file /root/instance.inf*" y comprobamos el estado del servicio con "*dsctl localhost status*".
 
