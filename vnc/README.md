@@ -5,12 +5,12 @@ wewewewewe
 wewewewewewewe
 wewewewewe
 
-![](1.PNG)
+![](1.JPG)
 
 wqwqwq
 wqwqwqqw
 
-![](2.PNG)
+![](2.JPG)
 
 
-![](3.PNG)
+![](3.JPG)
