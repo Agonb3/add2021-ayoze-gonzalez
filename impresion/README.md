@@ -63,3 +63,15 @@
   -Una vez dentro buscaremos la opción de propiedades y apuntaremos los datos que nos proporciona.
 
  ![](14.JPG)  
+
+### Comprobar desde el navegador
+
+-Desde el servidor accederemos mediante el navegador a la impresora y pondremos el servicio en pausa.
+
+![](15.JPG)  
+
+-Ahora desde el cliente intentaremos imprimir un documento a ver que pasa.
+
+![](16.JPG)  
+
+-Como podemos observar se queda en cola hasta que reanudemos el servcio.
