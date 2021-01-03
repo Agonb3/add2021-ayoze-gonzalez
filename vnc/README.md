@@ -6,16 +6,20 @@
 Para está práctica deberemos configurar 4 máquinas virtuales que tendrán los roles de servidores y clientes.  
 Las configuraciones de nombre e ip's serán las siguientes...  
 
-**Windows Server 2016 (Servidor)**
+Windows Server 2016 (Servidor)
+
 ![](01.JPG)
 
-**Windows 7(Cliente)**
+Windows 7(Cliente)
+
 ![](02.JPG)
 
-**OpenSuse(Servidor)**
+OpenSuse(Servidor)
+
 ![](04.JPG)
 
-**OpenSuse(Cliente)**
+OpenSuse(Cliente)
+
 ![](03.JPG)
 
 ### Windows Slave VNC
@@ -94,40 +98,39 @@ Desde una máquina GNU/Linux ejecutamos "nmap -Pn 192.168.1.31" para comprobar q
 
 ![](18.JPG)
 
-### -OpenSUSE Slave
+### OpenSUSE Master VNC
 
-Pasamos a configurar una máquina con OpenSUSE que hara las veces de servidor.
-
-![](12.JPG)
-
-![](13.JPG)
-
-![](14.JPG)
-
-Una vez configurado nos dirigimos a Yast/VNC, activamos la administración remota y abrimos los puertos del cortafuegos.
-
-![](16.JPG)
-
-Con nuestro usuario normal ejecutamos *vncserver -interfaz 192.168.1.31*
-para acceder al servidor.   
-Pondremos las claves de acceso.
-
-![](17.JPG)
-
-Ahora nos mostrará nuestrro número de escritorio remoto.
-
-Con *vdir /home/nombrealumno/.vnc* podemos ver que se han creado los registros de configuración.
-
-Ejecutaremos *ps -ef|grep vnc* para comprobar los servicios en ejecución y *lsof -i -n* para comprobar que los puertos están abiertos.
-
-![](18.JPG)
-
-Desde la terminal de una máquina GNU/Linux ejecutaremos nmap -Pn 192.168.1.31 para comprobar que los servicios son visibles.
+En nuestro cliente OpenSUSE no tendremos que instalar  ingún software adicional, puesto que viene integrado en el sistema.  
+Para acceder tan solo debemos ejecutar en nuestra terminal el comando "vncviewer 192.168.1.31:5901" (el puerto puede variar y dependera del número de escritorio obtenido anteriormente en el servidor).
 
 ![](19.JPG)
 
-Como podemos ver en la imagen el puerto 5801 no está abierto, lo que impedirá que el cliente pueda conectarse.
+### Comprobaciones Cruzadas
+
+Para finalizar vamos a acceder a nuestro **OpenSUSE Slave VNC** con nuestro **Windows Master VNC**.
 
 ![](20.JPG)
 
-"**Está practica quedo incompleta. Para recuperarla debo empezar desde el principio, puesto que las máquinas originales han sido eliminadas del virtual box**"
+![](21.JPG)
+
+Desde el servidor con el comando "lsoft -i" comprobamos las conexiones establecidas.
+
+![](22.JPG)
+
+Por último ejecutamos "vncserver -list".
+
+![](23.JPG)
+
+Ya solo nos queda acceder a nuestro **Windows Slave VNC** desde el cliente **OpenSUSE Master VNC**.
+
+![](24.JPG)
+
+![](25.JPG)
+
+Ejecutamos "netstat -n" desde el servidor para ver las conexiones establecidas.
+
+![](30.JPG)
+
+**ESTÁ ULTIMA PARTE HE TENIDO QUE ADAPTARLA UN POCO, PUESTO QUE CREO, QUE LA PRÁCTICA ESTÁ MAL REDACTADA. SE PIDE HASTA EN 3 OCASIONES LA MISMA CONEXIÓN.**
+
+![](40.JPG)
