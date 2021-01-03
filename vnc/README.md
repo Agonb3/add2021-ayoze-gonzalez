@@ -1,47 +1,98 @@
 
-# Actividad VNC
+# VNC
 
-## Instalaciones Previas
+## Instalaciones Previas.
 
+Para está práctica deberemos configurar 4 máquinas virtuales que tendrán los roles de servidores y clientes.  
+Las configuraciones de nombre e ip's serán las siguientes...  
 
--Para esta práctica necesitaremos configurar 4 máquinas virtuales 2 con sistema operativo Open Suse y otras 2 con Windows.
+**Windows Server 2016 (Servidor)**
+![](01.JPG)
 
-### -Windows Slave
+**Windows 7(Cliente)**
+![](02.JPG)
 
-Primero configuraremos una máquina con SO Windows para que realice las funciones de servidor.
-Le asignaremos una configuración ip estática dentro del rango de nuestra red y un nombre de usuario y máquina. Realizamos las comprobaciones para verificar que la hemos configurado correctamente.
+**OpenSuse(Servidor)**
+![](04.JPG)
 
-![](1.JPG)
+**OpenSuse(Cliente)**
+![](03.JPG)
+
+### Windows Slave VNC
+
+Para instalar el servicio Vnc-Server en Windows nos descargaremos el software libre "TightVNC" desde su página oficial.  
+Una vez comencemos la instalación, elegiremos la opción "Custom" (nos permite elegir entre servidor o cliente).
+ y seleccionamos la opción "TightVNC Server".  
+
+ ![](1.JPG)
+
+ En las opciones de conexión elegiremos usar contraseña de acceso y estableceremos la misma.
+
+ ![](5.JPG)
+
+Una vez finalizada la instalación, revisaremos en el cortafuegos, que tenemos abiertos los puertos necesarios para su correcto funcionamiento.  
+
 
 ![](2.JPG)
 
+Ahora, desde una máquina con GNU/Linux ejecutaremos "nmap -Pn 192.168.1.11" para comprobar que los puertos son vsibles desde fuera del servidor.
+
 ![](3.JPG)
 
-Ahora buscaremos e instalaremos el servicio TightVNC Server.
+### Windows Master VNC
 
-![](6.JPG)
-
-Desde la terminal de una máquina GNU/Linux ejecutaremos nmap -Pn 192.168.1.7 para comprobar que los servicios son visibles.
-
-![](8.JPG)
-
-### -Windows Master
-
-Ahora pasamos a configurar el cliente. Al igual que con el servidor asignamos una ip estática y nombres de usuario y máquina y realizamos las comprobaciones pertinentes.
+Para nuestro cliente de Windows tambien descargaremos "TightVNC", pero durante la instalación seleccionaremos la opción "TightVNC Viewer".   
 
 ![](4.JPG)
 
-![](5.JPG)
+Para verificar que la instalación de los servicios se ha hecho correctamente, nos conectaremos al "Windows Slave VNC" desde nuestro "Windows Master VNC".
 
-Tambien instalaremos el servicio TightVNC pero esta vez con la configuración viewer.
+![](6.JPG)
+
+![](7.JPG)
 
 ![](9.JPG)
 
-Ahora comprobamos que podemos conectarnos desde el cliente al servidor.
+Y desde nuestro cliente OpenSUSE.
 
 ![](10.JPG)
 
 ![](11.JPG)
+
+Por último ejecutaremos desde nuestro servidor el comando "netstat -n" para comprobar que se ha conectado correctamente.
+
+![](30.JPG)
+
+### OpenSUSE Slave VNC
+
+Para configurar el servicio VNC en OpenSUSE nos dirigimos al gestor "Yast" buscamos el servicio y lo activamos.
+
+![](12.JPG)
+
+Durante la instalación quizas sea necesario instalar algún paquete complementario.
+
+![](13.JPG)
+
+Una vez finalizada la instalación nos dirigimos al cortafuegos para verificar que el servicio tiene los puertos habilitados.
+
+![](14.JPG)
+
+Con nuestro usuario normal ejecutamos "vncserver" en la terminal para activar el servicio.   
+Establecemos la contraseña de acceso y finalmente nos devolverá el número de escritorio remoto que necesitaremos para realizar las conexiones.
+
+![](15.JPG)
+
+Nos dirigimos al directorio "/home/ayoze/.vnc" para comprobar que se han creado los archivos de configuración del servicio.
+
+![](16.JPG)
+
+Ejecutaremos los comandos "ps -ef|grep vnc" y "lsof -i -n" para comprobar los servcios VNC en ejecución y los puertos que utizan respectivamente.
+
+![](17.JPG)
+
+Desde una máquina GNU/Linux ejecutamos "nmap -Pn 192.168.1.31" para comprobar que los puertos son visibles desde fuera.
+
+![](18.JPG)
 
 ### -OpenSUSE Slave
 
