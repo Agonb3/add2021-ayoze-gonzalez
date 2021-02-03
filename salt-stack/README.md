@@ -1,6 +1,6 @@
 # Salt-Stack
 
-Está herramienta se encuentra dentro del grupo de gestores de infraestructura, cuya principal funcionalidad es, automatizar ordenes para que los hosts esclavos (**minions**) del sistema anfitrión puedan descargar dichas ordenes automáticamente al conectarse al nfitrión (**master**).
+Está herramienta se encuentra dentro del grupo de gestores de infraestructura, cuya principal funcionalidad es, automatizar ordenes para que los hosts esclavos (**minions**) del sistema anfitrión puedan descargar dichas ordenes automáticamente al conectarse al anfitrión (**master**).
 
 ## Configuraciones previas
 
@@ -83,8 +83,12 @@ Ejecutaremos **firewall-cmd --get-active-zones** para comprobar la zona de nuest
 
 ### Preparar el directorio para los estados
 
-- Vamos a crear directorios para guardar lo estados de Salt. Los estados de Salt son definiciones de cómo queremos que estén nuestras máquinas.
-Para ello crearemos el archivo **/etc/salt/master.d/roots.conf** con el siguiente contenido y reiniciamos el servicio.
+- Vamos a crear directorios **/srv/salt/base** y **/srv/salt/devel** para guardar lo estados de Salt.
+
+![](./62.JPG)
+
+Los estados de Salt son definiciones de cómo queremos que se configuren nuestras máquinas.
+Para que el sistema identifique y haga uso de los nuevos directorios, creamos el archivo **/etc/salt/master.d/roots.conf** con el siguiente contenido, y reiniciamos el servicio.
 
 ![](./33.JPG)
 
@@ -149,3 +153,19 @@ Comenzamos modificando el archivo top.sls para incluir el nuevo estado.
 - Por último aplicamos el estado.
 
 ![](./54.JPG)
+
+### Ampliar Estado Apache
+
+ - Vamos a crear el fichero **/srv/salt/base/files/holamundo.html** con el contenido que se muestra en la imagen.
+
+![](./70.JPG)
+
+ - Ahora incluiremos el directorio files en nuestro fichero **/srv/salt/base/top.sls**.
+
+![](./55.JPG)
+
+- Por último crearemos el fichero **/srv/salt/base/files/init.sls** como muestra la imagen y aplicamos el estado.
+
+![](./56.JPG)
+
+![](./57.JPG)
